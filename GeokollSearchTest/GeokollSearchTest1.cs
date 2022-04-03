@@ -4,14 +4,15 @@ using OpenQA.Selenium;
 namespace GeokollSearchTest
 {
 
-    public class UnitTest1
+    public class GeokollSearchTest1
     {
         private IWebDriver driver;
         private readonly By SearchInputSpace = By.XPath("//input[@name = 'q']");
         private readonly By SearchAfterInputButton = By.XPath("//i[@class = 'fa fa-search']");
         private readonly By ProductName = By.XPath("//h5[@class = 'card-title mw-300']");
+        
 
-        private const string SearchProduct = "biogel no limits grey 25 kg";
+        private const string SearchProduct = "Biogel No Limits Grey 25 kg";
         
         [SetUp]
         public void Setup()
@@ -30,11 +31,19 @@ namespace GeokollSearchTest
             
             var SearchButton = driver.FindElement(SearchAfterInputButton);
             SearchButton.Click();
-            
+           
             var ProductNameClick = driver.FindElement(ProductName);
-            ProductNameClick.Click();   
+            ProductNameClick.Click();
+
+            driver.FindElement(By.Id("layout-content")).Text.Contains(SearchProduct);
         }
-       
+        [TearDown]
+
+        public void TearDown()
+        {
+            driver.Quit();
+
+        }
      
 
     }
