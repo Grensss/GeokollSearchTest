@@ -24,28 +24,24 @@ namespace GeokollSearchTest
         {
             var mainPage = new MainMenuPageObject(driver);
             mainPage
-                .Search(MainMenuPageObject.SearchProduct)
+                .Search(MainMenuPageObject.BNLG25TextName)
                 .AssertProductBNLG25()
                 .BNLG25();
             var BNLG25Page = new BiogelNoLimitsGrey25kgPageObject(driver);
             BNLG25Page
                 .PriceCheck();
         }
+
         [TearDown]
         public void TearDown()
         {
             driver.Quit();
-
         }
     }
 
     public class GeokollSuckTest
     {
         private IWebDriver driver;
-
-        private readonly By SearchButton = By.XPath("//i[@class = 'fa fa-search']");
-        private readonly By SearchBox = By.XPath("//input[@name = 'q']");
-        private readonly By ProductPrice = By.XPath("//span[@class='lead']");
 
         [SetUp]
         public void SetUp()
@@ -58,18 +54,15 @@ namespace GeokollSearchTest
         [Test]
         public void Test() //Product price check
         {
-            var SearchProduct = driver.FindElement(SearchBox);
-            SearchProduct.SendKeys("Fugabella Eco Porcelana 0-8 Classic 5 kg");
-
-            var searchbutton = driver.FindElement(SearchButton);
-            searchbutton.Click();
-            
-            var Price = driver.FindElement(ProductPrice);
-
-            var ExpextedPrice = "15.1";
-
-            Assert.AreEqual(ExpextedPrice, Price.Text);
+            var mainPage = new MainMenuPageObject(driver);
+            mainPage
+                .Search(MainMenuPageObject.FEPC5TextName)
+                .FEPC5();
+            var FEPC5Page = new FugabellaEcoPorcelana0_8Classic5kgPageObject(driver);
+            FEPC5Page
+                .PriceCheck();
         }
+
         [TearDown]
         public void TearDown()
         {
