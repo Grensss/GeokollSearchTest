@@ -1,20 +1,15 @@
+using GeokollSearchTest.PageObject;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using System;
-using System.Linq;
+
 
 namespace GeokollSearchTest
 {
 
     public class GeokollSearchTest1
     {
-        private IWebDriver driver;
-        private readonly By SearchInputSpace = By.XPath("//input[@name = 'q']");
-        private readonly By SearchAfterInputButton = By.XPath("//i[@class = 'fa fa-search']");
-        private readonly By Title = By.XPath("//h5[contains(text(),'Grey')]");
-
-        private const string SearchProduct = "Biogel No Limits Grey 25 kg";
+        private IWebDriver driver; 
 
         [SetUp]
         public void Setup()
@@ -25,22 +20,18 @@ namespace GeokollSearchTest
         }
 
         [Test]
-        public void Test1()//Product exist check
+        public void ProductExistCheck()
         {
-            var SearchSpace = driver.FindElement(SearchInputSpace);
-            SearchSpace.SendKeys(SearchProduct);
-
-            var SearchButton = driver.FindElement(SearchAfterInputButton);
-            SearchButton.Click();
-
-            var TitleText = driver.FindElement(Title);
-
-            Assert.AreEqual(SearchProduct, TitleText.Text);
-
+            var mainPage = new MainMenuPageObject(driver);
+            mainPage
+                .Search(MainMenuPageObject.SearchProduct)
+                .AssertProductBNLG25()
+                .BNLG25();
+            var BNLG25Page = new BiogelNoLimitsGrey25kgPageObject(driver);
+            BNLG25Page
+                .PriceCheck();
         }
-
         [TearDown]
-
         public void TearDown()
         {
             driver.Quit();
@@ -53,7 +44,7 @@ namespace GeokollSearchTest
         private IWebDriver driver;
 
         private readonly By SearchButton = By.XPath("//i[@class = 'fa fa-search']");
-        private readonly By Search = By.XPath("//input[@name = 'q']");
+        private readonly By SearchBox = By.XPath("//input[@name = 'q']");
         private readonly By ProductPrice = By.XPath("//span[@class='lead']");
 
         [SetUp]
@@ -67,7 +58,7 @@ namespace GeokollSearchTest
         [Test]
         public void Test() //Product price check
         {
-            var SearchProduct = driver.FindElement(Search);
+            var SearchProduct = driver.FindElement(SearchBox);
             SearchProduct.SendKeys("Fugabella Eco Porcelana 0-8 Classic 5 kg");
 
             var searchbutton = driver.FindElement(SearchButton);
