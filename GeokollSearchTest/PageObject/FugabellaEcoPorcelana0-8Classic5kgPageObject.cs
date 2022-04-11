@@ -12,20 +12,18 @@ namespace GeokollSearchTest.PageObject
     {
         private IWebDriver driver;
 
-        private readonly By ProductPrice = By.XPath("//p[@class = 'lead text-muted mb-3']");
+        private readonly By FEPC5Price = By.XPath("//p[@class = 'lead text-muted mb-3']");
 
         public FugabellaEcoPorcelana0_8Classic5kgPageObject(IWebDriver driver)
         {
             this.driver = driver;
         }
 
-        public FugabellaEcoPorcelana0_8Classic5kgPageObject PriceCheck() 
+        public void PriceCheckFEPC5() 
         {
-            var Price = driver.FindElement(ProductPrice);
+            var Price = driver.FindElement(FEPC5Price);
             var ExpextedPrice = "€ 15.1";
-            Assert.AreEqual(ExpextedPrice, Price.Text);
-
-            return new FugabellaEcoPorcelana0_8Classic5kgPageObject(driver);
+            Assert.AreEqual(ExpextedPrice, Price.Text);   
         }
     }
 }

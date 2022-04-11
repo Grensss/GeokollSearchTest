@@ -19,13 +19,11 @@ namespace GeokollSearchTest.PageObject
             this.driver = driver;
         }
 
-        public BiogelNoLimitsGrey25kgPageObject PriceCheck() 
+        public void PriceCheckBNLG25() 
         {
             var Price = driver.FindElement(BNLG25Price);
             var ExpextedPrice = "€ 22.15";
             Assert.AreEqual(ExpextedPrice, Price.Text);
-
-            return new BiogelNoLimitsGrey25kgPageObject(driver);
         }
 
     }

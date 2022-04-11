@@ -7,18 +7,8 @@ using OpenQA.Selenium.Chrome;
 namespace GeokollSearchTest
 {
 
-    public class GeokollSearchTest1
+    public class GeokollSearchTest1 :BaseClass
     {
-        private IWebDriver driver; 
-
-        [SetUp]
-        public void Setup()
-        {
-            driver = new ChromeDriver();
-            driver.Navigate().GoToUrl("https://geokoll.lv/lv");
-            driver.Manage().Window.Maximize();
-        }
-
         [Test]
         public void ProductExistCheck()
         {
@@ -29,28 +19,12 @@ namespace GeokollSearchTest
                 .BNLG25();
             var BNLG25Page = new BiogelNoLimitsGrey25kgPageObject(driver);
             BNLG25Page
-                .PriceCheck();
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            driver.Quit();
+                .PriceCheckBNLG25();
         }
     }
 
-    public class GeokollSuckTest
+    public class GeokollSuckTest : BaseClass
     {
-        private IWebDriver driver;
-
-        [SetUp]
-        public void SetUp()
-        {
-            driver = new ChromeDriver();
-            driver.Navigate().GoToUrl("https://geokoll.lv/lv");
-            driver.Manage().Window.Maximize();
-        }
-
         [Test]
         public void Test() //Product price check
         {
@@ -60,20 +34,9 @@ namespace GeokollSearchTest
                 .FEPC5();
             var FEPC5Page = new FugabellaEcoPorcelana0_8Classic5kgPageObject(driver);
             FEPC5Page
-                .PriceCheck();
+                .PriceCheckFEPC5();
         }
-
-        [TearDown]
-        public void TearDown()
-        {
-            driver.Quit();
-        }
-
     }
-
-
-
-
 }
 
     

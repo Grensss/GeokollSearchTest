@@ -11,6 +11,7 @@ namespace GeokollSearchTest.PageObject
 {
     internal class MainMenuPageObject
     {
+        
         private IWebDriver driver;
         private readonly By SearchBox = By.XPath("//input[@name = 'q']");
         private readonly By SearchButton = By.XPath("//i[@class = 'fa fa-search']");
@@ -19,7 +20,7 @@ namespace GeokollSearchTest.PageObject
 
         public const string BNLG25TextName = "Biogel No Limits Grey 25 kg";
         public const string FEPC5TextName = "Fugabella Eco Porcelana 0-8 Classic 5 kg";
-        
+
         public MainMenuPageObject(IWebDriver driver)
         {
             this.driver = driver;
