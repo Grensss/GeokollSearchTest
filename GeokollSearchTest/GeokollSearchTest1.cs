@@ -7,7 +7,7 @@ using OpenQA.Selenium.Chrome;
 namespace GeokollSearchTest
 {
 
-    public class GeokollSearchTest1 :BaseClass
+    public class GeokollSearchTest1 : BaseClass
     {
         [Test]
         public void ProductExistCheck()
