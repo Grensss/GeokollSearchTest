@@ -13,15 +13,14 @@ namespace GeokollSearchTest.PageObject
     public class BaseClass
     {
         protected IWebDriver driver;
-
+     
         [OneTimeSetUp]
         protected void DoBeforeAllTests()
         {
             driver = new ChromeDriver();
         }
-
         [TearDown]
-        protected void DoAfterEach() 
+        protected void Quit() 
         {
             driver.Quit();
         }
@@ -30,13 +29,9 @@ namespace GeokollSearchTest.PageObject
         {
             driver.Navigate().GoToUrl("https://geokoll.lv/lv");
             driver.Manage().Window.Maximize();
+            WaitUntil.CheckUrl(driver, "https://geokoll.lv/lv");
         }
-        //public void StartUP()
-        //{ 
-        //    
 
-         
-        //}
 
     }
 }

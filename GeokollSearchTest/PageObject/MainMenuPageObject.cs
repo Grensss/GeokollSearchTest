@@ -29,13 +29,16 @@ namespace GeokollSearchTest.PageObject
         
         public MainMenuPageObject Search(string searchtag) 
         {
+            WaitUntil.WaitForElement(driver, SearchBox);
             driver.FindElement(SearchBox).SendKeys(searchtag);
             driver.FindElement(SearchButton).Click();
+            
            
             return new MainMenuPageObject(driver);
         }
         public MainMenuPageObject AssertProductBNLG25()
         {
+            WaitUntil.ExistanceOfElement(driver, ProductBNLG25);
             var TitleText = driver.FindElement(ProductBNLG25);
             Assert.AreEqual(BNLG25TextName, TitleText.Text);
 
@@ -44,17 +47,19 @@ namespace GeokollSearchTest.PageObject
 
 
 
-        public BiogelNoLimitsGrey25kgPageObject BNLG25()
+        public ProductPageObject BNLG25()
         {
+            WaitUntil.WaitForElement(driver, ProductBNLG25);
             driver.FindElement(ProductBNLG25).Click();
 
-            return new BiogelNoLimitsGrey25kgPageObject(driver);
+            return new ProductPageObject(driver);
         }
-        public FugabellaEcoPorcelana0_8Classic5kgPageObject FEPC5() 
+        public ProductPageObject FEPC5() 
         {
+            WaitUntil.WaitForElement(driver, ProductFEPC5);
             driver.FindElement(ProductFEPC5).Click();
 
-            return new FugabellaEcoPorcelana0_8Classic5kgPageObject(driver);
+            return new ProductPageObject(driver);
         }
 
 

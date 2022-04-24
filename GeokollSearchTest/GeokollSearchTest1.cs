@@ -17,7 +17,7 @@ namespace GeokollSearchTest
                 .Search(MainMenuPageObject.BNLG25TextName)
                 .AssertProductBNLG25()
                 .BNLG25();
-            var BNLG25Page = new BiogelNoLimitsGrey25kgPageObject(driver);
+            var BNLG25Page = new ProductPageObject(driver);
             BNLG25Page
                 .PriceCheckBNLG25();
         }
@@ -32,11 +32,12 @@ namespace GeokollSearchTest
             mainPage
                 .Search(MainMenuPageObject.FEPC5TextName)
                 .FEPC5();
-            var FEPC5Page = new FugabellaEcoPorcelana0_8Classic5kgPageObject(driver);
+            var FEPC5Page = new ProductPageObject(driver);
             FEPC5Page
                 .PriceCheckFEPC5();
         }
     }
+
 }
 
     
