@@ -38,6 +38,20 @@ namespace GeokollSearchTest
         }
     }
 
+    public class SearchOnPageTest : BaseClass
+    {
+        [Test]
+        public void Test() 
+        {
+            var mainPage = new MainMenuPageObject(driver);
+            mainPage
+                .Finder();
+            var GLA25page = new ProductPageObject(driver);
+            GLA25page
+                .PriceCheckGLA25();
+        }
+    }
+
 }
 
     

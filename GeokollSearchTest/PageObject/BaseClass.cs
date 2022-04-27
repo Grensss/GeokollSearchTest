@@ -20,7 +20,7 @@ namespace GeokollSearchTest.PageObject
             driver = new ChromeDriver();
         }
         [TearDown]
-        protected void Quit() 
+        protected void Quit()
         {
             driver.Quit();
         }
