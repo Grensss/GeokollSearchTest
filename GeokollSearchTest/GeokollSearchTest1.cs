@@ -10,45 +10,42 @@ namespace GeokollSearchTest
     public class GeokollSearchTest1 : BaseClass
     {
         [Test]
-        public void ProductExistCheck()
+        public void Test1()
         {
             var mainPage = new MainMenuPageObject(driver);
-            mainPage
-                .Search(MainMenuPageObject.BNLG25TextName)
-                .AssertProductBNLG25()
-                .BNLG25();
-            var BNLG25Page = new ProductPageObject(driver);
-            BNLG25Page
-                .PriceCheckBNLG25();
+            var ProductAssert = new AssertClass(driver);
+            
+            mainPage.Search(MainMenuPageObject.BNLG25TextName);
+            ProductAssert.AssertProductBNLG25();
+            mainPage.BNLG25();
+            ProductAssert.PriceCheckBNLG25();
         }
     }
 
-    public class GeokollSuckTest : BaseClass
+    public class GeokollTest : BaseClass
     {
         [Test]
-        public void Test() //Product price check
+        public void Test2() 
         {
             var mainPage = new MainMenuPageObject(driver);
-            mainPage
-                .Search(MainMenuPageObject.FEPC5TextName)
-                .FEPC5();
-            var FEPC5Page = new ProductPageObject(driver);
-            FEPC5Page
-                .PriceCheckFEPC5();
+            var ProductAssert = new AssertClass(driver);
+            
+            mainPage.Search(MainMenuPageObject.FEPC5TextName)
+                    .FEPC5();
+            ProductAssert.PriceCheckFEPC5();
         }
     }
 
     public class SearchOnPageTest : BaseClass
     {
         [Test]
-        public void Test() 
+        public void Test3() 
         {
             var mainPage = new MainMenuPageObject(driver);
-            mainPage
-                .Finder();
-            var GLA25page = new ProductPageObject(driver);
-            GLA25page
-                .PriceCheckGLA25();
+            var ProductAssert = new AssertClass(driver);
+            
+            mainPage.Finder();
+            ProductAssert.PriceCheckGLA25();
         }
     }
 

@@ -6,19 +6,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GeokollSearchTest.PageObject
+namespace GeokollSearchTest
 {
-    internal class ProductPageObject
+    internal class AssertClass
     {
         private IWebDriver driver;
-
-        private readonly By ProductPrice = By.XPath("//p[@class = 'lead text-muted mb-3']");
-
-        public ProductPageObject(IWebDriver driver)
+        public AssertClass(IWebDriver driver) 
         {
             this.driver = driver;
         }
 
+        private readonly By ProductPrice = By.XPath("//p[@class = 'lead text-muted mb-3']");
+        private readonly By ProductBNLG25 = By.XPath("//h5[@class= 'card-title mw-300'][contains(text(),'Biogel No Limits Grey 25 kg')]");
+        
+        public const string BNLG25TextName = "Biogel No Limits Grey 25 kg";
+
+
+
+        public AssertClass AssertProductBNLG25()
+        {
+            WaitUntil.ExistanceOfElement(driver, ProductBNLG25);
+            var TitleText = driver.FindElement(ProductBNLG25);
+            Assert.AreEqual(BNLG25TextName, TitleText.Text);
+
+            return new AssertClass(driver);
+        }
         public void PriceCheckBNLG25() 
         {
             WaitUntil.ExistanceOfElement(driver, ProductPrice);

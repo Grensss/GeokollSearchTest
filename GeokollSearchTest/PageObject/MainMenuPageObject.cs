@@ -31,8 +31,13 @@ namespace GeokollSearchTest.PageObject
         {
             this.driver = driver;
         }
+        //button[@id='search-icon-legacy']
+        //Случай в казино в 4к60фпс но камера зумирует
+        //input[@id='search']
+        //a[@class = 'ytp-youtube-button ytp-button yt-uix-sessionlink']
+        //button[@class = 'ytp-large-play-button ytp-button']
 
-        
+
         public MainMenuPageObject Search(string searchtag) 
         {
             WaitUntil.WaitForElement(driver, SearchBox);
@@ -42,30 +47,20 @@ namespace GeokollSearchTest.PageObject
            
             return new MainMenuPageObject(driver);
         }
-        public MainMenuPageObject AssertProductBNLG25()
-        {
-            WaitUntil.ExistanceOfElement(driver, ProductBNLG25);
-            var TitleText = driver.FindElement(ProductBNLG25);
-            Assert.AreEqual(BNLG25TextName, TitleText.Text);
 
-            return new MainMenuPageObject(driver);
-        }
-
-
-
-        public ProductPageObject BNLG25()
+        public MainMenuPageObject BNLG25()
         {
             WaitUntil.WaitForElement(driver, ProductBNLG25);
             driver.FindElement(ProductBNLG25).Click();
 
-            return new ProductPageObject(driver);
+            return new MainMenuPageObject(driver);
         }
-        public ProductPageObject FEPC5() 
+        public MainMenuPageObject FEPC5() 
         {
             WaitUntil.WaitForElement(driver, ProductFEPC5);
             driver.FindElement(ProductFEPC5).Click();
 
-            return new ProductPageObject(driver);
+            return new MainMenuPageObject(driver);
         }
         public bool ProductCheckOnPage()
         {
